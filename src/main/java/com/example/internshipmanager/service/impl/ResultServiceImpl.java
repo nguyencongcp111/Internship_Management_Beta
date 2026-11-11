@@ -1,8 +1,11 @@
 package com.example.internshipmanager.service.impl;
 
 import com.example.internshipmanager.exception.ResourceNotFoundException;
+<<<<<<< HEAD
 import com.example.internshipmanager.exception.UnexpectedRoleException;
 import com.example.internshipmanager.models.dto.request.admin.result.EditResultRequest;
+=======
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 import com.example.internshipmanager.models.dto.request.admin.result.ResultRequest;
 import com.example.internshipmanager.models.entity.*;
 import com.example.internshipmanager.repository.*;
@@ -19,6 +22,7 @@ public class ResultServiceImpl implements ResultService {
     private final AssignmentRepository assignmentRepository;
     private final RoundRepository roundRepository;
     private final CriteriaRepository criteriaRepository;
+<<<<<<< HEAD
     private final StudentRepository studentRepository;
 
     @Override
@@ -62,15 +66,29 @@ public class ResultServiceImpl implements ResultService {
 
     @Override
     public AssessmentResult createResult(ResultRequest createResultRequest, User currentUser) {
+=======
+    private final UserRepository userRepository;
+
+    @Override
+    public List<AssessmentResult> getAssessmentResult() {
+        return resultRepository.findAll();
+    }
+
+    @Override
+    public AssessmentResult createResult(ResultRequest createResultRequest) {
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
         InternshipAssignment assignment = assignmentRepository.findById(
                 createResultRequest.getAssignmentId()
         ).orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy id"));
 
+<<<<<<< HEAD
         if (assignment.getMentor() == null
                 || !assignment.getMentor().getUser().getId().equals(currentUser.getId())) {
             throw new UnexpectedRoleException("Bạn không được phân công cho sinh viên này");
         }
 
+=======
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
         AssessmentRound round = roundRepository.findById(
                 createResultRequest.getRoundId()
         ).orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy id"));
@@ -79,13 +97,28 @@ public class ResultServiceImpl implements ResultService {
                 createResultRequest.getCriterionId()
         ).orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy id"));
 
+<<<<<<< HEAD
+=======
+        User mentor = userRepository.findById(
+                createResultRequest.getEvaluatedBy()
+        ).orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy id"));
+
+        if (mentor.getRole() != Roles.MENTOR) {
+            throw new ResourceNotFoundException("Không phải mentor");
+        }
+
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
         AssessmentResult result = AssessmentResult.builder()
                 .internshipAssignment(assignment)
                 .assessmentRound(round)
                 .evaluationCriteria(criterion)
                 .score(createResultRequest.getScore())
                 .comments(createResultRequest.getComments())
+<<<<<<< HEAD
                 .evaluatedBy(currentUser)
+=======
+                .evaluatedBy(mentor)
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
                 .evaluationDate(createResultRequest.getEvaluationDate())
                 .build();
 
@@ -93,6 +126,7 @@ public class ResultServiceImpl implements ResultService {
     }
 
     @Override
+<<<<<<< HEAD
     public AssessmentResult getAssessmentResultById(Integer id, User currentUser) {
         AssessmentResult result = resultRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy id"));
@@ -149,5 +183,10 @@ public class ResultServiceImpl implements ResultService {
         result.setEvaluationDate(editResultRequest.getEvaluationDate());
 
         return resultRepository.save(result);
+=======
+    public AssessmentResult getAssessmentResultById(Integer id) {
+        return resultRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy id"));
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
     }
 }

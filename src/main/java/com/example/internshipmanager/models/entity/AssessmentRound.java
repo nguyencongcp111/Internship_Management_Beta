@@ -1,6 +1,9 @@
 package com.example.internshipmanager.models.entity;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnore;
+=======
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -50,10 +53,16 @@ public class AssessmentRound {
     private InternshipPhase internshipPhase;
 
     @OneToMany(mappedBy = "assessmentRound")
+<<<<<<< HEAD
     @JsonIgnore
     private List<RoundCriteria> roundCriteria;
 
     @OneToMany(mappedBy = "assessmentRound")
     @JsonIgnore
+=======
+    private List<RoundCriteria> roundCriteria;
+
+    @OneToMany(mappedBy = "assessmentRound")
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
     private List<AssessmentResult> assessmentResult;
 }

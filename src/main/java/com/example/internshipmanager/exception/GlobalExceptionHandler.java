@@ -1,8 +1,11 @@
 package com.example.internshipmanager.exception;
 
 import com.example.internshipmanager.models.dto.response.InfoError;
+<<<<<<< HEAD
 import jakarta.servlet.ServletException;
 import org.springframework.dao.DataIntegrityViolationException;
+=======
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -11,6 +14,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import com.example.internshipmanager.models.dto.response.ErrorResponse;
+<<<<<<< HEAD
+=======
+import org.springframework.web.server.ResponseStatusException;
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -145,6 +152,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
+<<<<<<< HEAD
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ErrorResponse> handleDataIntegrity(
             DataIntegrityViolationException exception) {
@@ -158,6 +166,21 @@ public class GlobalExceptionHandler {
                         LocalDateTime.now()
                 )
         );
+=======
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<ErrorResponse> handleResponseStatus(
+            ResponseStatusException exception
+    ) {
+
+        ErrorResponse response = new ErrorResponse<>();
+        response.setSuccess(false);
+        response.setTimestamp(LocalDateTime.now());
+        response.setMessage(exception.getReason() != null ? exception.getReason() : "Đã xảy ra lỗi");
+        response.setData(null);
+
+
+        return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
     }
 
 }

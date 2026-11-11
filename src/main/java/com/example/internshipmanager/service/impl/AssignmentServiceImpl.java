@@ -9,7 +9,10 @@ import com.example.internshipmanager.service.AssignmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD
 import java.time.LocalDateTime;
+=======
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 import java.util.List;
 import java.util.Optional;
 
@@ -89,7 +92,11 @@ public class AssignmentServiceImpl implements AssignmentService {
         ).orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy id"));
 
         InternshipAssignment assignment = InternshipAssignment.builder()
+<<<<<<< HEAD
                 .assignmentTime(LocalDateTime.now())
+=======
+                .assignmentTime(createAssignmentRequest.getAssignmentTime())
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
                 .status(createAssignmentRequest.getStatus())
                 .student(student)
                 .mentor(mentor)
@@ -103,6 +110,7 @@ public class AssignmentServiceImpl implements AssignmentService {
         InternshipAssignment assignment = assignmentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy id"));
 
+<<<<<<< HEAD
         if (assignment.getStatus() == Status.COMPLETED) {
             throw new IllegalArgumentException("Khóa học đã hoàn thành, không thể cập nhật");
         }
@@ -111,6 +119,10 @@ public class AssignmentServiceImpl implements AssignmentService {
 
 
 
+=======
+        assignment.setStatus(editAssignmentRequest.getStatus());
+
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
         return assignmentRepository.save(assignment);
     }
 }

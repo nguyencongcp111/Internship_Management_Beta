@@ -30,7 +30,11 @@ public class StudentController {
         return new ResponseEntity<>(
                 new DataResponse<>(
                         true,
+<<<<<<< HEAD
                         "Tìm thấy " + studentService.getAllStudent().size() + " sinh viên",
+=======
+                        "Tìm thấy " + studentService.getAllStudent() + " sinh viên",
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
                         studentService.getAllStudent(),
                         null,
                         LocalDateTime.now()

@@ -26,7 +26,11 @@ public class RoundController {
         return new ResponseEntity<>(
                 new DataResponse<>(
                         true,
+<<<<<<< HEAD
                         "Tìm thấy " + roundService.getAssessmentRounds().size() + " đợt đánh giá",
+=======
+                        "Tìm thấy " + roundService.getAssessmentRounds() + " đợt đánh giá",
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
                         roundService.getAssessmentRounds(),
                         null,
                         LocalDateTime.now()

@@ -28,6 +28,12 @@ public class ResultRequest {
 
     private String comments;
 
+<<<<<<< HEAD
+=======
+    @NotNull(message = "Không được để trống ID Người chấm")
+    private Integer evaluatedBy;
+
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
     @NotNull(message = "Không được để trống ngày đánh giá")
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime evaluationDate;

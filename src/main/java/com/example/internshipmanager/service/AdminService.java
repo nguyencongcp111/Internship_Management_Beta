@@ -20,6 +20,9 @@ public interface AdminService {
     User editRole(Integer id, EditRoleRequest editRoleRequest);
 
     User editStatus(Integer id, EditStatusRequest editStatusRequest);
+<<<<<<< HEAD
 
     void deleteUser(Integer id);
+=======
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 }

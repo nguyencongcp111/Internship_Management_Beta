@@ -26,7 +26,11 @@ public class CriteriaController {
         return new ResponseEntity<>(
                 new DataResponse<>(
                         true,
+<<<<<<< HEAD
                         "Tìm thấy " + criteriaService.getCriteria().size() + " tiêu chí",
+=======
+                        "Tìm thấy " + criteriaService.getCriteria() + " tiêu chí",
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
                         criteriaService.getCriteria(),
                         null,
                         LocalDateTime.now()

@@ -57,11 +57,19 @@ public class User {
 
     public void isActive(Object o) {
     }
+<<<<<<< HEAD
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     @JsonIgnore
     private Student student;
 
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+=======
+    @OneToOne(mappedBy = "user")
+    @JsonIgnore
+    private Student student;
+
+    @OneToOne(mappedBy = "user")
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
     @JsonIgnore
     private Mentor mentor;
 

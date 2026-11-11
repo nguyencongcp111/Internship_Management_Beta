@@ -8,16 +8,38 @@ import com.example.internshipmanager.models.entity.User;
 import com.example.internshipmanager.repository.UserRepository;
 import com.example.internshipmanager.security.jwt.JwtProvider;
 import com.example.internshipmanager.security.principal.UserPrincipal;
+<<<<<<< HEAD
 import com.example.internshipmanager.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
+=======
+import com.example.internshipmanager.service.JwtBlacklistService;
+import com.example.internshipmanager.service.UserService;
+import io.jsonwebtoken.Claims;
+import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
+=======
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.concurrent.TimeUnit;
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +49,7 @@ public class UserServiceImpl implements UserService {
     private final AuthenticationManager authenticationManager;
     private final JwtProvider jwtProvider;
 
+<<<<<<< HEAD
     @Override
     public JWTResponse loginUser(LoginRequest loginRequest, HttpSession httpSession) {
         try {
@@ -34,6 +57,19 @@ public class UserServiceImpl implements UserService {
             User user = userRepository.findUserByUsername(
                     loginRequest.getUsername()
             ).orElseThrow(() -> new BadCredentialsException("Sai tài khoản hoặc mật khẩu"));
+=======
+    private final StringRedisTemplate redisTemplate;
+    private final JwtBlacklistService jwtBlacklistService;
+
+    @Override
+    public JWTResponse loginUser(LoginRequest loginRequest, HttpSession httpSession) {
+
+        User user = userRepository.findUserByUsername(
+                loginRequest.getUsername()
+        ).orElseThrow(() -> new BadCredentialsException("Sai tài khoản hoặc mật khẩu"));
+
+        try {
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -61,9 +97,17 @@ public class UserServiceImpl implements UserService {
                     .type("Bearer")
                     .accessToken(token)
                     .build();
+<<<<<<< HEAD
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
+=======
+        } catch (DisabledException e) {
+            throw new ResponseStatusException(
+                    HttpStatus.FORBIDDEN,
+                    "Tài khoản không hoạt động"
+            );
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
         }
     }
 
@@ -73,4 +117,24 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("Không thể tìm thấy người dùng"));
     }
 
+<<<<<<< HEAD
+=======
+    @Override
+    @Transactional
+    public void logout (String authorization) {
+        if (authorization == null || !authorization.startsWith("Bearer ")) {
+            throw new IllegalArgumentException("Invalid Authorization Header");
+        }
+
+        String token = authorization.substring(7);
+
+        Claims claims = jwtProvider.getClaimsFromToken(token);
+
+        String jti = claims.getId();
+
+        Instant expiry = claims.getExpiration().toInstant();
+
+        jwtBlacklistService.blacklist(jti, expiry);
+    }
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 }

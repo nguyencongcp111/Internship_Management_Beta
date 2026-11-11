@@ -39,6 +39,10 @@ public class SecurityConfig {
         httpSecurity.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(req -> req
                         .requestMatchers("/api/auth/**").permitAll()
+<<<<<<< HEAD
+=======
+                        .requestMatchers("/actuator/health", "/actuator/prometheus").permitAll()
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
                         .requestMatchers("/api/admin/**").hasAnyRole(String.valueOf(Roles.ADMIN))
                         .anyRequest().authenticated())
                 .cors(Customizer.withDefaults())

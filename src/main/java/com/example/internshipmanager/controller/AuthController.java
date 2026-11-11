@@ -15,6 +15,10 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+<<<<<<< HEAD
+=======
+import java.util.Map;
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 
 @RestController
 @RequestMapping("/api/auth")
@@ -51,4 +55,16 @@ public class AuthController {
                 ), HttpStatus.OK
         );
     }
+<<<<<<< HEAD
+=======
+
+    @PostMapping("/logout")
+    public ResponseEntity<Map<String, String>> logout(@RequestHeader ("Authorization") String authorization) {
+        userService.logout(authorization);
+
+        return ResponseEntity.ok(
+                Map.of("message", "Đã đăng xuất")
+        );
+    }
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 }

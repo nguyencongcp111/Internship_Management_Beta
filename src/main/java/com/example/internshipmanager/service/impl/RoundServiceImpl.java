@@ -49,9 +49,15 @@ public class RoundServiceImpl implements RoundService {
         AssessmentRound round = roundRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy id"));
 
+<<<<<<< HEAD
         InternshipPhase phase = phaseRepository.findById(
                 editRoundRequest.getPhaseId()
         ).orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy id"));
+=======
+        InternshipPhase phase = phaseRepository.findById(editRoundRequest.getPhaseId()).orElseThrow(
+                () -> new ResourceNotFoundException("Không tìm thấy id phase")
+        );
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 
         round.setRoundName(editRoundRequest.getRoundName());
         round.setInternshipPhase(phase);

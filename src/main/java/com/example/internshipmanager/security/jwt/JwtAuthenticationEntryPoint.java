@@ -34,7 +34,11 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
                 (String) request.getAttribute("jwt_error");
 
         if (message == null) {
+<<<<<<< HEAD
             message = "Không có quyền truy cập";
+=======
+            message = "Chưa đăng nhập hoặc token rỗng.";
+>>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
         }
 
         ErrorResponse<Object> response1 = new ErrorResponse<>(
