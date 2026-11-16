@@ -9,10 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-<<<<<<< HEAD
-=======
-import org.springframework.cglib.core.Local;
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

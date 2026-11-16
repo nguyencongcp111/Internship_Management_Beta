@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{baseUrl}}/api/auth/me"
+method: GET
+headers:
+  Accept: application/json
+auth:
+  type: bearer
+  credentials:
+    token: "{{loggedOutToken}}"
+scripts:
+  - type: afterResponse
+    code: pm.test('Token đã logout bị từ chối', () => pm.expect([401,403]).to.include(pm.response.code));
+    language: text/javascript
+order: 6000

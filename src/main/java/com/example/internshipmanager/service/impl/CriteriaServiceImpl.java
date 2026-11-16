@@ -30,7 +30,7 @@ public class CriteriaServiceImpl implements CriteriaService {
 
     public EvaluationCriteria createCriteria(CreateCriteriaRequest createCriteriaRequest) {
 
-        boolean find = criteriaRepository.findEvaluationCriteriaByCriterionName(createCriteriaRequest.getCriterionName());
+        boolean find = criteriaRepository.existsByCriterionName(createCriteriaRequest.getCriterionName());
 
         if (find) {
             throw new ResourceFoundException("Tồn tại tiêu chí có tên này!");

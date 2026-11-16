@@ -1,0 +1,25 @@
+$kind: http-request
+url: "{{baseUrl}}/api/auth/login"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "{{adminUsername}}",
+      "password": "{{adminPassword}}"
+    }
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Login thành công", function () { pm.response.to.have.status(200); });
+      const j = pm.response.json();
+      const t = j && j.data && j.data.accessToken;
+      pm.test("Response có accessToken", function () { pm.expect(t).to.be.a("string").and.not.empty; });
+      if (t) { pm.environment.set("adminToken", t); pm.environment.set("token", t); }
+    language: text/javascript
+order: 1000

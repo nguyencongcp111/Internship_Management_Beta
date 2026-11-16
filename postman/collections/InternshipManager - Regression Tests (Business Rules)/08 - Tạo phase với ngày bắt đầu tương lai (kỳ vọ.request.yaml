@@ -1,0 +1,37 @@
+$kind: http-request
+name: 08 - Tạo phase với ngày bắt đầu tương lai (kỳ vọng 201)
+url: "{{baseUrl}}/api/internship_phases"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+      "phaseName": "PM Future Date {{uniqueSuffix}}",
+      "startDate": "{{futureDate}}",
+      "endDate": "31-12-2099",
+      "description": "Must be accepted"
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      
+      const now = new Date();
+      const fmt = d => [String(d.getDate()).padStart(2,'0'), String(d.getMonth()+1).padStart(2,'0'), d.getFullYear()].join('-');
+      const past = new Date(now); past.setDate(past.getDate()-1);
+      const future = new Date(now); future.setDate(future.getDate()+30);
+      pm.collectionVariables.set("pastDate", fmt(past));
+      pm.collectionVariables.set("futureDate", fmt(future));
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      
+      pm.test("Cho phép tạo phase có startDate hôm nay/tương lai", () => pm.response.to.have.status(201));
+      const id = pm.response.json()?.data?.id;
+      pm.expect(id).to.exist;
+      pm.collectionVariables.set("phaseId", String(id));
+    language: text/javascript
+order: 9000

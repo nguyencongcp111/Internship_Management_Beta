@@ -1,0 +1,15 @@
+# Use this workspace to collaborate
+workspace:
+  id: 78d4835a-4d43-4d43-829b-63d01f0238d3
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
+cloudResources:
+  collections:
+    ../postman/collections/InternshipManager - Regression Tests (Business Rules): f3c451ef-61f8-46c0-8aa8-99c3846e0181
+
+# All resources in the `postman/` folder are automatically registered in Local View.
+# Point to additional files outside the `postman/` folder to register them individually. Example:
+#localResources:
+#  collections:
+#    - ../tests/E2E Test Collection/

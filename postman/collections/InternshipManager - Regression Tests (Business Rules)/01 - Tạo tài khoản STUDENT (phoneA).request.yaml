@@ -1,0 +1,39 @@
+$kind: http-request
+url: "{{baseUrl}}/api/admin"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+      "username": "pm_student_{{uniqueSuffix}}",
+      "password": "Test@123456",
+      "fullName": "Postman Student",
+      "email": "pm_student_{{uniqueSuffix}}@example.com",
+      "phoneNumber": "{{phoneA}}",
+      "role": "STUDENT",
+      "active": true
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      
+      const suffix = Date.now().toString();
+      pm.collectionVariables.set("uniqueSuffix", suffix);
+      const digits = suffix.slice(-8);
+      pm.collectionVariables.set("phoneA", "09" + digits);
+      pm.collectionVariables.set("phoneB", "08" + digits);
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      
+      pm.test("Tạo tài khoản STUDENT thành công", () => pm.response.to.have.status(201));
+      const json = pm.response.json();
+      const id = json?.data?.id;
+      pm.expect(id, "data.id").to.exist;
+      pm.collectionVariables.set("studentUserId", String(id));
+    language: text/javascript
+order: 2000

@@ -1,0 +1,28 @@
+$kind: http-request
+name: 02 - Tạo tài khoản MENTOR dùng lại phoneA (kỳ vọng 400)
+url: "{{baseUrl}}/api/admin"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+      "username": "pm_duplicate_{{uniqueSuffix}}",
+      "password": "Test@123456",
+      "fullName": "Duplicate Phone",
+      "email": "pm_duplicate_{{uniqueSuffix}}@example.com",
+      "phoneNumber": "{{phoneA}}",
+      "role": "MENTOR",
+      "active": true
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      
+      pm.test("Từ chối số điện thoại đã thuộc tài khoản STUDENT", () => pm.response.to.have.status(400));
+      pm.expect(pm.response.text().toLowerCase()).to.include("số điện thoại");
+    language: text/javascript
+order: 3000

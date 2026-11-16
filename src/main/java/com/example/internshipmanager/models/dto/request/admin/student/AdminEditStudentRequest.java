@@ -15,9 +15,6 @@ import java.time.LocalDate;
 @Setter
 
 public class AdminEditStudentRequest {
-    @NotBlank(message = "Không được để trống mã sinh viên")
-    private String studentCode;
-
     private String major;
 
     private String className;

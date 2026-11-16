@@ -1,0 +1,168 @@
+/* Sidebar.module.css */
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  box-shadow: 2px 0 16px rgba(0,0,0,0.08);
+  z-index: 10;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.logoIcon {
+  font-size: 28px;
+}
+
+.logoTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0a4f9f;
+  line-height: 1.1;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.logoSub {
+  font-size: 11px;
+  color: #666;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  background: #f8f9ff;
+  border-bottom: 1px solid #eef0f8;
+}
+
+.userAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1565c0, #42a5f5);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  flex-shrink: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.userName {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a2e;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.userRole {
+  font-size: 11px;
+  color: #0a4f9f;
+  font-weight: 500;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.nav {
+  flex: 1;
+  padding: 12px 0;
+  overflow-y: auto;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 24px;
+  color: #333;
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 400;
+  transition: background 0.15s, color 0.15s;
+  border-left: 3px solid transparent;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.navLink:hover {
+  background: #eef4ff;
+  color: #0a4f9f;
+}
+
+.navLink.active {
+  background: #e8f0fe;
+  color: #0a4f9f;
+  border-left: 3px solid #1565c0;
+  font-weight: 600;
+}
+
+.navIcon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+.fontSelectorBox {
+  padding: 12px 20px;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #fafbff;
+}
+
+.fontLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.fontSelect {
+  padding: 6px 10px;
+  font-size: 12px;
+  border: 1px solid #d4dff0;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #222;
+  outline: none;
+  cursor: pointer;
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: none;
+  border: none;
+  border-top: 1px solid #f0f0f0;
+  color: #d32f2f;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.logoutBtn:hover {
+  background: #fff5f5;
+}
+

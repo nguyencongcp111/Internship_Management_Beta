@@ -13,6 +13,7 @@ import java.util.Collection;
 @Data
 @Builder
 public class UserPrincipal implements UserDetails {
+    @ToString.Exclude
     private User user;
     private Collection<? extends GrantedAuthority> authorities;
 

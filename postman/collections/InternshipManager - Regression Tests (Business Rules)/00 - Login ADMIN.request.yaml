@@ -1,0 +1,28 @@
+$kind: http-request
+url: "{{baseUrl}}/api/auth/login"
+method: POST
+headers:
+  - key: Accept
+    value: application/json
+  - key: Content-Type
+    value: application/json
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "{{adminUsername}}",
+      "password": "{{adminPassword}}"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      
+      pm.test("Login trả 200", () => pm.response.to.have.status(200));
+      const json = pm.response.json();
+      const token = json?.data?.accessToken;
+      pm.expect(token, "data.accessToken").to.be.a("string").and.not.empty;
+      pm.collectionVariables.set("token", token);
+    language: text/javascript
+order: 1000

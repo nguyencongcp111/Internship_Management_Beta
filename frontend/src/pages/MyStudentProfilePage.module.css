@@ -1,0 +1,42 @@
+/* MyStudentProfilePage.module.css */
+
+.card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 4px 24px rgba(13, 42, 94, 0.08);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: '#1565c0';
+  color: #1565c0;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px 32px;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(21, 101, 192, 0.1);
+  margin: 28px 0;
+}

@@ -1,0 +1,10 @@
+$kind: http-request
+url: "{{baseUrl}}/api/mentor/my-profile"
+method: GET
+headers:
+  Accept: application/json
+auth:
+  type: bearer
+  credentials:
+    token: "{{mentorToken}}"
+order: 3000

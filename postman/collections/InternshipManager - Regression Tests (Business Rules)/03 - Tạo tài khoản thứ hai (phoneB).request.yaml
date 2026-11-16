@@ -1,0 +1,29 @@
+$kind: http-request
+url: "{{baseUrl}}/api/admin"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+      "username": "pm_other_{{uniqueSuffix}}",
+      "password": "Test@123456",
+      "fullName": "Other Account",
+      "email": "pm_other_{{uniqueSuffix}}@example.com",
+      "phoneNumber": "{{phoneB}}",
+      "role": "ADMIN",
+      "active": true
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      
+      pm.test("Tạo tài khoản thứ hai với phoneB thành công", () => pm.response.to.have.status(201));
+      const id = pm.response.json()?.data?.id;
+      pm.expect(id).to.exist;
+      pm.collectionVariables.set("adminUserId", String(id));
+    language: text/javascript
+order: 4000

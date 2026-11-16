@@ -1,0 +1,26 @@
+$kind: http-request
+url: "{{baseUrl}}/api/internship_phases"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "phaseName": "Postman Phase",
+      "startDate": "20-11-2026",
+      "endDate": "30-11-2026",
+      "description": "Created from Postman"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{adminToken}}"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("HTTP 201", function () { pm.response.to.have.status(201); });
+      if (pm.response.code >= 200 && pm.response.code < 300) { try { const j=pm.response.json(); if (j && j.data && j.data.id !== undefined) pm.environment.set("phaseId", j.data.id); } catch(e) {} }
+    language: text/javascript
+order: 3000

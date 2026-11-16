@@ -1,0 +1,17 @@
+$kind: collection
+description: Postman regression suite for global phone uniqueness, rejecting past internship phase start dates, and immutable studentCode. Run in order. Configure adminUsername/adminPassword first. Base URL defaults to http://localhost:8386.
+variables:
+  baseUrl: http://localhost:8386
+  adminUsername: REPLACE_ADMIN_USERNAME
+  adminPassword: REPLACE_ADMIN_PASSWORD
+  token: ""
+  phoneA: "0901111001"
+  phoneB: "0901111002"
+  adminUserId: ""
+  studentUserId: ""
+  studentId: ""
+  studentCodeOriginal: SV-POSTMAN-001
+  phaseId: ""
+  uniqueSuffix: ""
+  pastDate: ""
+  futureDate: ""

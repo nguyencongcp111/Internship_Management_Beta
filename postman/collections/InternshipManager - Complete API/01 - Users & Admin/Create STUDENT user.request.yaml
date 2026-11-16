@@ -1,0 +1,29 @@
+$kind: http-request
+url: "{{baseUrl}}/api/admin"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "{{newStudentUsername}}",
+      "password": "ChangeMe123!",
+      "fullName": "Postman Student",
+      "email": "{{newStudentEmail}}",
+      "phoneNumber": "0900000101",
+      "role": "STUDENT",
+      "isActive": true
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{adminToken}}"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("HTTP 201", function () { pm.response.to.have.status(201); });
+      if (pm.response.code >= 200 && pm.response.code < 300) { try { const j=pm.response.json(); if (j && j.data && j.data.id !== undefined) pm.environment.set("studentUserId", j.data.id); } catch(e) {} }
+    language: text/javascript
+order: 3000

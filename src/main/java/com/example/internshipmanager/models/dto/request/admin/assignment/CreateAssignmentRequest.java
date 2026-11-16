@@ -15,13 +15,10 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class CreateAssignmentRequest {
-<<<<<<< HEAD
-=======
     @NotNull(message = "Không được để trống thời gian")
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     private LocalDateTime assignmentTime;
 
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
     private Status status = Status.PENDING;
 
     @NotNull(message = "Không được để trống Student Id")

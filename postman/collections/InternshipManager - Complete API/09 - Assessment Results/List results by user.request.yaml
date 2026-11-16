@@ -1,0 +1,12 @@
+$kind: http-request
+url: "{{baseUrl}}/api/assessment_results"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  userId: "{{studentUserId}}"
+auth:
+  type: bearer
+  credentials:
+    token: "{{token}}"
+order: 3000

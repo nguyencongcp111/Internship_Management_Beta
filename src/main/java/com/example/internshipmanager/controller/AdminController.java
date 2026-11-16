@@ -80,12 +80,7 @@ public class AdminController {
 
     @PutMapping("/{id}/role")
     public ResponseEntity<DataResponse<User>> editRole (
-<<<<<<< HEAD
             @PathVariable Integer id, @Valid @RequestBody EditRoleRequest editRoleRequest) {
-=======
-            @PathVariable Integer id, @RequestBody EditRoleRequest editRoleRequest) {
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
-
         return new ResponseEntity<>(
                 new DataResponse<>(
                         true,
@@ -99,11 +94,7 @@ public class AdminController {
 
     @PutMapping("/{id}/status")
     public ResponseEntity<DataResponse<User>> editStatus (
-<<<<<<< HEAD
             @PathVariable Integer id, @Valid @RequestBody EditStatusRequest editStatusRequest) {
-=======
-            @PathVariable Integer id, @RequestBody EditStatusRequest editStatusRequest) {
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 
         return new ResponseEntity<>(
                 new DataResponse<>(
@@ -115,7 +106,6 @@ public class AdminController {
                 ), HttpStatus.OK
         );
     }
-<<<<<<< HEAD
 
     @DeleteMapping("/{id}")
     public ResponseEntity<DataResponse<?>> deleteStatus(@PathVariable Integer id) {
@@ -132,6 +122,4 @@ public class AdminController {
                 ), HttpStatus.OK
         );
     }
-=======
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 }

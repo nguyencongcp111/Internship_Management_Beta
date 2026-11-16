@@ -1,0 +1,24 @@
+$kind: http-request
+url: "{{baseUrl}}/api/internship_phases/{{phaseId}}"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "phaseName": "Postman Phase Updated",
+      "startDate": "20-11-2026",
+      "endDate": "30-11-2026",
+      "description": "Updated from Postman"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{adminToken}}"
+scripts:
+  - type: afterResponse
+    code: pm.test('HTTP 200', () => pm.response.to.have.status(200));
+    language: text/javascript
+order: 4000

@@ -22,11 +22,7 @@ public class RoundCriteriaController {
     private final RoundCriteriaService roundCriteriaService;
 
     @GetMapping
-<<<<<<< HEAD
     public ResponseEntity<DataResponse<List<RoundCriteria>>> getRoundCriteriaList(){
-=======
-    private ResponseEntity<DataResponse<List<RoundCriteria>>> getRoundCriteriaList(){
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
         return new ResponseEntity<>(
                 new DataResponse<>(
                         true,
@@ -39,11 +35,7 @@ public class RoundCriteriaController {
     }
 
     @GetMapping("/{id}")
-<<<<<<< HEAD
     public ResponseEntity<DataResponse<RoundCriteria>> getRoundCriteriaById(
-=======
-    private ResponseEntity<DataResponse<RoundCriteria>> getRoundCriteriaById(
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
             @PathVariable Integer id
     ){
         return new ResponseEntity<>(
@@ -59,11 +51,7 @@ public class RoundCriteriaController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-<<<<<<< HEAD
     public ResponseEntity<DataResponse<RoundCriteria>> addRoundCriteria(
-=======
-    private ResponseEntity<DataResponse<RoundCriteria>> addRoundCriteria(
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
             @Valid @RequestBody CreateRoundCriteriaRequest createRoundCriteriaRequest
     ) {
         return new ResponseEntity<>(
@@ -79,11 +67,7 @@ public class RoundCriteriaController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
-<<<<<<< HEAD
     public ResponseEntity<DataResponse<RoundCriteria>> editRoundCriteria(
-=======
-    private ResponseEntity<DataResponse<RoundCriteria>> editRoundCriteria(
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
             @PathVariable Integer id,
             @Valid @RequestBody EditRoundCriteriaRequest editRoundCriteriaRequest
     ) {
@@ -100,11 +84,7 @@ public class RoundCriteriaController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
-<<<<<<< HEAD
     public ResponseEntity<DataResponse<RoundCriteria>> deleteRoundCriteria(
-=======
-    private ResponseEntity<DataResponse<RoundCriteria>> deleteRoundCriteria(
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
             @PathVariable Integer id
     ) {
         roundCriteriaService.deleteRoundCriteria(id);

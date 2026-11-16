@@ -1,0 +1,29 @@
+$kind: http-request
+url: "{{baseUrl}}/api/student"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+      "studentCode": "{{studentCodeOriginal}}",
+      "major": "Information Technology",
+      "className": "IT-PM-01",
+      "dateOfBirth": "2003-01-15",
+      "address": "Postman test address",
+      "userId": "{{studentUserId}}"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      
+      pm.test("Tạo hồ sơ sinh viên thành công", () => pm.response.to.have.status(201));
+      const data = pm.response.json()?.data;
+      pm.expect(data?.id).to.exist;
+      pm.expect(data?.studentCode).to.eql(pm.collectionVariables.get("studentCodeOriginal"));
+      pm.collectionVariables.set("studentId", String(data.id));
+    language: text/javascript
+order: 5000

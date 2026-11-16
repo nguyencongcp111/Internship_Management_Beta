@@ -1,0 +1,35 @@
+$kind: collection
+description: Complete API collection generated from the current Spring Controllers, request DTOs and API_TESTING_GUIDE.md. Run with a local environment. Use dedicated test data; delete operations are destructive.
+variables:
+  baseUrl: http://localhost:8080
+  token: ""
+  adminToken: ""
+  mentorToken: ""
+  studentToken: ""
+  loggedOutToken: ""
+  adminUsername: admin
+  adminPassword: CHANGE_ME
+  mentorUsername: mentor.test
+  studentUsername: student.test
+  newStudentUsername: postman.student
+  newStudentEmail: postman.student@example.com
+  newMentorUsername: postman.mentor
+  newMentorEmail: postman.mentor@example.com
+  updatedUserEmail: postman.updated@example.com
+  userId: "1"
+  studentUserId: "1"
+  mentorUserId: "1"
+  studentId: "1"
+  mentorId: "1"
+  phaseId: "1"
+  roundId: "1"
+  criteriaId: "1"
+  roundCriteriaId: "1"
+  assignmentId: "1"
+  resultId: "1"
+auth:
+  - id: 403920c3-6794-4030-8524-85538c70acdc
+    type: bearer
+    name: bearer auth
+    credentials:
+      token: "{{token}}"

@@ -54,7 +54,7 @@ public class StudentServiceImpl implements StudentService {
             throw new ResourceNotFoundException("id " + user.getId() + " không phải sinh viên");
         }
 
-        boolean find = studentRepository.findStudentByStudentCode(
+        Boolean find = studentRepository.existsByStudentCode(
                 createStudentRequest.getStudentCode()
         );
 
@@ -85,7 +85,12 @@ public class StudentServiceImpl implements StudentService {
         student.setAddress(editStudentRequest.getAddress());
         user.setFullName(editStudentRequest.getFullName());
         user.setEmail(editStudentRequest.getEmail());
-        user.setPhoneNumber(editStudentRequest.getPhoneNumber());
+        String phoneNumber = editStudentRequest.getPhoneNumber().trim();
+        if (!phoneNumber.equals(user.getPhoneNumber())
+                && userRepository.existsUserByPhoneNumberAndIdNot(phoneNumber, user.getId())) {
+            throw new ResourceFoundException("Số điện thoại đã được sử dụng");
+        }
+        user.setPhoneNumber(phoneNumber);
 
         return studentRepository.save(student);
     }
@@ -97,22 +102,18 @@ public class StudentServiceImpl implements StudentService {
 
         User user = student.getUser();
 
-        boolean find = studentRepository.findStudentByStudentCode(
-                adminEditStudentRequest.getStudentCode()
-        );
-
-        if (find) {
-            throw new ResourceFoundException("Tồn tại sinh viên có mã "  + adminEditStudentRequest.getStudentCode());
-        }
-
-        student.setStudentCode(adminEditStudentRequest.getStudentCode());
         student.setMajor(adminEditStudentRequest.getMajor());
         student.setClassName(adminEditStudentRequest.getClassName());
         student.setDateOfBirth(adminEditStudentRequest.getDateOfBirth());
         student.setAddress(adminEditStudentRequest.getAddress());
         user.setFullName(adminEditStudentRequest.getFullName());
         user.setEmail(adminEditStudentRequest.getEmail());
-        user.setPhoneNumber(adminEditStudentRequest.getPhoneNumber());
+        String phoneNumber = adminEditStudentRequest.getPhoneNumber().trim();
+        if (!phoneNumber.equals(user.getPhoneNumber())
+                && userRepository.existsUserByPhoneNumberAndIdNot(phoneNumber, user.getId())) {
+            throw new ResourceFoundException("Số điện thoại đã được sử dụng");
+        }
+        user.setPhoneNumber(phoneNumber);
 
         return studentRepository.save(student);
     }

@@ -8,7 +8,10 @@ import com.example.internshipmanager.repository.PhaseRepository;
 import com.example.internshipmanager.service.PhaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -30,6 +33,13 @@ public class PhaseServiceImpl implements PhaseService {
 
     @Override
     public InternshipPhase createPhase (CreatePhaseRequest createPhaseRequest) {
+        if (createPhaseRequest.getStartDate().isBefore(LocalDate.now())) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Ngày bắt đầu không được ở quá khứ"
+            );
+        }
+
         InternshipPhase phase = InternshipPhase.builder()
                 .phaseName(createPhaseRequest.getPhaseName())
                 .description(createPhaseRequest.getDescription())

@@ -1,5 +1,6 @@
 package com.example.internshipmanager.service.impl;
 
+import com.example.internshipmanager.exception.ResourceFoundException;
 import com.example.internshipmanager.exception.ResourceNotFoundException;
 import com.example.internshipmanager.models.dto.request.admin.mentor.AdminEditMentorRequest;
 import com.example.internshipmanager.models.dto.request.admin.mentor.CreateMentorRequest;
@@ -68,7 +69,12 @@ public class MentorServiceImpl implements MentorService {
         mentor.setAcademicRank(adminEditMentorRequest.getAcademicRank());
         user.setFullName(adminEditMentorRequest.getFullName());
         user.setEmail(adminEditMentorRequest.getEmail());
-        user.setPhoneNumber(adminEditMentorRequest.getPhoneNumber());
+        String phoneNumber = adminEditMentorRequest.getPhoneNumber().trim();
+        if (!phoneNumber.equals(user.getPhoneNumber())
+                && userRepository.existsUserByPhoneNumberAndIdNot(phoneNumber, user.getId())) {
+            throw new ResourceFoundException("Số điện thoại đã được sử dụng");
+        }
+        user.setPhoneNumber(phoneNumber);
 
         return mentorRepository.save(mentor);
     }
@@ -81,7 +87,12 @@ public class MentorServiceImpl implements MentorService {
 
         user.setFullName(editMentorRequest.getFullName());
         user.setEmail(editMentorRequest.getEmail());
-        user.setPhoneNumber(editMentorRequest.getPhoneNumber());
+        String phoneNumber = editMentorRequest.getPhoneNumber().trim();
+        if (!phoneNumber.equals(user.getPhoneNumber())
+                && userRepository.existsUserByPhoneNumberAndIdNot(phoneNumber, user.getId())) {
+            throw new ResourceFoundException("Số điện thoại đã được sử dụng");
+        }
+        user.setPhoneNumber(phoneNumber);
 
         return mentorRepository.save(mentor);
     }

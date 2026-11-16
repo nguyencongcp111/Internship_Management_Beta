@@ -1,0 +1,23 @@
+$kind: http-request
+url: "{{baseUrl}}/api/mentor/my-profile"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "fullName": "Mentor Self Update",
+      "email": "{{newMentorEmail}}",
+      "phoneNumber": "0900000107"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{mentorToken}}"
+scripts:
+  - type: afterResponse
+    code: pm.test('HTTP 200', () => pm.response.to.have.status(200));
+    language: text/javascript
+order: 6000

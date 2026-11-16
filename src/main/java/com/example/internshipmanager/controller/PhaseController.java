@@ -7,10 +7,6 @@ import com.example.internshipmanager.models.entity.InternshipPhase;
 import com.example.internshipmanager.service.PhaseService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-<<<<<<< HEAD
-=======
-import org.springframework.cglib.core.Local;
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -30,11 +26,7 @@ public class PhaseController {
         return new ResponseEntity<>(
                 new DataResponse<>(
                         true,
-<<<<<<< HEAD
                         "Tìm thấy " + phaseService.getInternshipPhases().size() + " giai đoạn",
-=======
-                        "Tìm thấy " + phaseService.getInternshipPhases() + " giai đoạn",
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
                         phaseService.getInternshipPhases(),
                         null,
                         LocalDateTime.now()

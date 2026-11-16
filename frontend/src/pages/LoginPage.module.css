@@ -1,0 +1,120 @@
+/* LoginPage.module.css */
+.root {
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 48px rgba(21, 101, 192, 0.14);
+  padding: 48px 48px 40px;
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid #e3eaf5;
+}
+
+.logoArea {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.logoEmoji {
+  font-size: 44px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0a4f9f;
+  margin: 0 0 4px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.input {
+  padding: 12px 16px;
+  border: 1.5px solid #d4dff0;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #1a1a2e;
+  background: #f8fbff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.input:focus {
+  border-color: #1565c0;
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.1);
+  background: #fff;
+}
+
+.error {
+  background: #fff0f0;
+  color: #c62828;
+  border: 1px solid #ffcdd2;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.btn {
+  padding: 13px;
+  background: linear-gradient(135deg, #1565c0, #42a5f5);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}

@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
-<<<<<<< HEAD
-=======
 import java.util.UUID;
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
 
 @Component
 @RequiredArgsConstructor
@@ -28,10 +25,7 @@ public class JwtProvider {
             Date today = new Date();
 
             return Jwts.builder()
-<<<<<<< HEAD
-=======
                     .setId(UUID.randomUUID().toString())
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
                     .setSubject(username)
                     .claim("role", role)
                     .setIssuedAt(today)
@@ -61,17 +55,12 @@ public class JwtProvider {
         }
     }
 
-<<<<<<< HEAD
-    public String getUsernameFromToken(String token) {
-        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
-=======
-    public Claims getClaimsFromToken(String token) {
-        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
-    }
-
     public String getUsernameFromToken(String token) {
         return getClaimsFromToken(token).getSubject();
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
+    }
+
+    public Claims getClaimsFromToken(String token) {
+        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
     }
 
 

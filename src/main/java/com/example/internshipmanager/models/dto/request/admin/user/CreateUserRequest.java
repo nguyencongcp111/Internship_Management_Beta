@@ -32,11 +32,7 @@ public class CreateUserRequest {
     @Length(max = 100, message = "Email tối đa 100 ký tự")
     private String email;
 
-<<<<<<< HEAD
     //@Pattern(regexp = "^0[35789]\\d{8}$", message = "Số điện thoại không đúng định dạng")
-=======
-    @Pattern(regexp = "^0[35789]\\d{8}$", message = "Số điện thoại không đúng định dạng")
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
     private String phoneNumber;
 
     @NotNull(message = "Không được để trống role")

@@ -1,5 +1,6 @@
 package com.example.internshipmanager.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -47,6 +48,7 @@ public class InternshipAssignment {
     private InternshipPhase internshipPhase;
 
     @OneToMany(mappedBy = "internshipAssignment")
+    @JsonIgnore
     private List<AssessmentResult> assessmentResult;
 
 

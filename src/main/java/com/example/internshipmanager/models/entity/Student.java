@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -45,6 +46,7 @@ public class Student {
 
     @OneToOne
     @JoinColumn(name = "user_id", unique = true, nullable = false)
+    @ToString.Exclude
     private User user;
 
     @OneToMany(mappedBy = "student")

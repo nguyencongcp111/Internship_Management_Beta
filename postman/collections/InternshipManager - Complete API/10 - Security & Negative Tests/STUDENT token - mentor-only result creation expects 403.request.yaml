@@ -1,0 +1,27 @@
+$kind: http-request
+url: "{{baseUrl}}/api/assessment_results"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "assignmentId": "{{assignmentId}}",
+      "roundId": "{{roundId}}",
+      "criterionId": "{{criteriaId}}",
+      "score": 7,
+      "comments": "Forbidden test",
+      "evaluatedBy": "{{studentUserId}}",
+      "evaluationDate": "25/11/2026 15:30"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{studentToken}}"
+scripts:
+  - type: afterResponse
+    code: pm.test('Forbidden', () => pm.response.to.have.status(403));
+    language: text/javascript
+order: 4000

@@ -1,0 +1,25 @@
+$kind: http-request
+url: "{{baseUrl}}/api/assessment_results/{{resultId}}"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "roundId": "{{roundId}}",
+      "criterionId": "{{criteriaId}}",
+      "score": 9,
+      "comments": "Updated assessment",
+      "evaluationDate": "25/11/2026 16:00"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{mentorToken}}"
+scripts:
+  - type: afterResponse
+    code: pm.test('HTTP 200', () => pm.response.to.have.status(200));
+    language: text/javascript
+order: 6000

@@ -1,0 +1,56 @@
+/* Layout.module.css */
+.root {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Blue gradient: dark bottom-right → light top-left */
+.bgGradient {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    #e3f0ff 0%,
+    #90bfef 25%,
+    #4a90d9 55%,
+    #1565c0 80%,
+    #0d47a1 100%
+  );
+  z-index: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px 32px 32px 24px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* White card: 80% of remaining width, opacity 30% */
+.contentCard {
+  width: 80%;
+  min-height: calc(100vh - 64px);
+  background: rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.45);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+  padding: 36px 40px;
+  box-sizing: border-box;
+  color: #1a1a2e;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}

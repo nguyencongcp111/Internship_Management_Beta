@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -38,7 +39,7 @@ public class User {
     @Column(unique = true, nullable = false, length = 100)
     private String email;
 
-    @Column(length = 20)
+    @Column(unique = true, length = 20)
     private String phoneNumber;
 
     @Column(nullable = false)
@@ -57,20 +58,14 @@ public class User {
 
     public void isActive(Object o) {
     }
-<<<<<<< HEAD
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     @JsonIgnore
+    @ToString.Exclude
     private Student student;
 
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
-=======
-    @OneToOne(mappedBy = "user")
     @JsonIgnore
-    private Student student;
-
-    @OneToOne(mappedBy = "user")
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
-    @JsonIgnore
+    @ToString.Exclude
     private Mentor mentor;
 
     @OneToMany(mappedBy = "evaluatedBy")

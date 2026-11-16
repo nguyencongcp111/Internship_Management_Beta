@@ -23,20 +23,14 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-webmvc'
-<<<<<<< HEAD
-=======
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
     implementation("org.mindrot:jbcrypt:0.4")
     implementation 'javax.activation:activation:1.1.1'
     implementation 'javax.xml.bind:jaxb-api:2.3.1'
     implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-<<<<<<< HEAD
-=======
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
->>>>>>> 2cf64d9 (fixed auth, gan nham roundId)
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql'

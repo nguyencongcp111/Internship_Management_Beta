@@ -1,0 +1,27 @@
+$kind: http-request
+url: "{{baseUrl}}/api/student/{{studentId}}"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "major": "Software Engineering",
+      "className": "IT02",
+      "dateOfBirth": "2003-01-15",
+      "address": "Ha Noi",
+      "fullName": "Updated Student",
+      "email": "{{newStudentEmail}}",
+      "phoneNumber": "0900000104"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{adminToken}}"
+scripts:
+  - type: afterResponse
+    code: pm.test('HTTP 200', () => pm.response.to.have.status(200));
+    language: text/javascript
+order: 5000

@@ -1,0 +1,54 @@
+name: InternshipManager - Local
+values:
+  - key: baseUrl
+    value: 'http://localhost:8080'
+  - key: token
+    value: ''
+  - key: adminToken
+    value: ''
+  - key: mentorToken
+    value: ''
+  - key: studentToken
+    value: ''
+  - key: loggedOutToken
+    value: ''
+  - key: adminUsername
+    value: admin
+  - key: adminPassword
+    value: CHANGE_ME
+  - key: mentorUsername
+    value: mentor.test
+  - key: studentUsername
+    value: student.test
+  - key: newStudentUsername
+    value: postman.student
+  - key: newStudentEmail
+    value: postman.student@example.com
+  - key: newMentorUsername
+    value: postman.mentor
+  - key: newMentorEmail
+    value: postman.mentor@example.com
+  - key: updatedUserEmail
+    value: postman.updated@example.com
+  - key: userId
+    value: '1'
+  - key: studentUserId
+    value: '1'
+  - key: mentorUserId
+    value: '1'
+  - key: studentId
+    value: '1'
+  - key: mentorId
+    value: '1'
+  - key: phaseId
+    value: '1'
+  - key: roundId
+    value: '1'
+  - key: criteriaId
+    value: '1'
+  - key: roundCriteriaId
+    value: '1'
+  - key: assignmentId
+    value: '1'
+  - key: resultId
+    value: '1'

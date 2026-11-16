@@ -1,0 +1,29 @@
+$kind: http-request
+url: "{{baseUrl}}/api/student/{{studentId}}"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+      "major": "Software Engineering",
+      "className": "IT-PM-02",
+      "dateOfBirth": "2003-01-15",
+      "address": "Updated by Postman",
+      "fullName": "Postman Student Updated",
+      "email": "pm_student_updated_{{uniqueSuffix}}@example.com",
+      "phoneNumber": "{{phoneA}}"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      
+      pm.test("Cập nhật sinh viên thành công dù không gửi studentCode", () => pm.response.to.have.status(200));
+      const data = pm.response.json()?.data;
+      pm.expect(data?.studentCode).to.eql(pm.collectionVariables.get("studentCodeOriginal"));
+      pm.expect(data?.major).to.eql("Software Engineering");
+    language: text/javascript
+order: 6000
